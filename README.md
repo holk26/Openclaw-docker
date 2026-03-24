@@ -87,10 +87,37 @@ NODE_ENV=production
 HOMEBREW_NO_AUTO_UPDATE=1
 HOMEBREW_NO_INSTALL_CLEANUP=1
 
-# At least one AI provider key is required
-OPENAI_API_KEY=sk-...
-# ANTHROPIC_API_KEY=
-# GOOGLE_GENERATIVE_AI_API_KEY=
+# Gateway
+OPENCLAW_GATEWAY_TOKEN=your-secret-token
+OPENCLAW_GATEWAY_PORT=18789
+OPENCLAW_BRIDGE_PORT=18790
+OPENCLAW_GATEWAY_BIND=lan
+GATEWAY_CONTROLUI_ALLOWEDORIGINS=https://agente.example.com
+
+# Auth
+AUTH_USERNAME=admin
+AUTH_PASSWORD=your-strong-password
+
+# Plugins  (comma-separated)
+OPENCLAW_PLUGINS=discord,memory-core,whatsapp
+
+# Integrations
+WHATSAPP_ENABLED=true
+TELEGRAM_BOT_TOKEN=
+
+# AI provider  (at least one required)
+OPENAI_API_KEY=
+OPENROUTER_API_KEY=
+ANTHROPIC_API_KEY=
+GOOGLE_GENERATIVE_AI_API_KEY=
+KIMI_API_KEY=
+
+# Email
+RESEND_API_KEY=
+K4X_EMAIL_PASSWORD=
+
+# Extra apt packages to install at startup (space-separated)
+OPENCLAW_DOCKER_APT_PACKAGES=git curl nano
 ```
 
 > **Tip:** You can also upload a `.env` file directly in the *Environment* tab.
@@ -125,6 +152,21 @@ All variables are documented in [`.env.example`](.env.example). Copy that file t
 | `NODE_ENV` | `production` | Node.js environment |
 | `HOMEBREW_NO_AUTO_UPDATE` | `1` | Disable Homebrew auto-update |
 | `HOMEBREW_NO_INSTALL_CLEANUP` | `1` | Disable Homebrew cleanup after installs |
-| `OPENAI_API_KEY` | _(empty)_ | OpenAI API key (required if using OpenAI models) |
-| `ANTHROPIC_API_KEY` | _(empty)_ | Anthropic API key (required if using Claude models) |
-| `GOOGLE_GENERATIVE_AI_API_KEY` | _(empty)_ | Google Gemini API key (required if using Gemini models) |
+| `OPENCLAW_GATEWAY_TOKEN` | _(required)_ | Secret token for gateway authentication |
+| `OPENCLAW_GATEWAY_PORT` | `18789` | Port the gateway listens on |
+| `OPENCLAW_BRIDGE_PORT` | `18790` | Port the bridge service listens on |
+| `OPENCLAW_GATEWAY_BIND` | `lan` | Network interface to bind (`lan` or `all`) |
+| `GATEWAY_CONTROLUI_ALLOWEDORIGINS` | _(empty)_ | Allowed origins for the control UI (comma-separated URLs) |
+| `AUTH_USERNAME` | _(required)_ | Basic-auth username for the web interface |
+| `AUTH_PASSWORD` | _(required)_ | Basic-auth password for the web interface |
+| `OPENCLAW_PLUGINS` | _(empty)_ | Comma-separated list of plugins to load (e.g. `discord,memory-core,whatsapp`) |
+| `WHATSAPP_ENABLED` | `false` | Enable the WhatsApp integration |
+| `TELEGRAM_BOT_TOKEN` | _(empty)_ | Telegram bot token (from @BotFather) |
+| `OPENAI_API_KEY` | _(empty)_ | OpenAI API key |
+| `ANTHROPIC_API_KEY` | _(empty)_ | Anthropic / Claude API key |
+| `GOOGLE_GENERATIVE_AI_API_KEY` | _(empty)_ | Google Gemini API key |
+| `OPENROUTER_API_KEY` | _(empty)_ | OpenRouter API key (access to many models) |
+| `KIMI_API_KEY` | _(empty)_ | Kimi (Moonshot AI) API key |
+| `RESEND_API_KEY` | _(empty)_ | Resend transactional email API key |
+| `K4X_EMAIL_PASSWORD` | _(empty)_ | K4X email account password |
+| `OPENCLAW_DOCKER_APT_PACKAGES` | _(empty)_ | Extra apt packages to install at startup (space-separated) |
