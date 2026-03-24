@@ -7,10 +7,10 @@ services:
     image: openclaw:latest
     container_name: openclaw
     restart: unless-stopped
+    env_file:
+      - .env
     volumes:
       - openclaw-workspace:/home/node/.openclaw/workspace
-    environment:
-      - NODE_ENV=production
 
 volumes:
   openclaw-workspace:

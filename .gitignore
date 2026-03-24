@@ -1,0 +1,6 @@
+# Local environment – never commit real secrets
+.env
+
+# OS / editor artifacts
+.DS_Store
+Thumbs.db
